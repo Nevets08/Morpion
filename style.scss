@@ -1,0 +1,150 @@
+$card-color : #29B6F6;
+$hover-card-color: #78909C;
+$height-modal : 100px;
+$circle-color : #4CAF50;
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin modal-size {
+    background-color: #EEEEEE;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.container-modal {
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 25%;
+    animation: modal-slide-down 1.0s ease-in;
+
+    .modal-title {
+        padding-top: 20px;
+        margin-left: 35%;
+        margin-right: 35%;
+        @include flexCenter();
+        @include modal-size();
+        height: $height-modal;
+    }
+
+    .modal-player {
+        @include flexCenter();
+        @include modal-size();
+        padding-bottom: 30px;
+
+        h2 {
+            i {
+                // color: $circle-color;
+                font-size: 25px;
+            }
+        }
+    }
+
+    .modal-choice {
+        @include flexCenter();
+        @include modal-size();
+        height: $height-modal;
+
+        i {
+            @include flexCenter();
+            align-items: center;
+            cursor: pointer;
+            font-size: 45px;
+            background-color: #fff;
+            height: 60px;
+            width: 60px;
+            border-radius: 10px;
+            margin-left: 50px;
+            margin-right: 50px;
+
+            &:hover {
+                transform: scale(1.10);
+                transition: all 0.3s;
+                box-shadow: 2px 2px 23px -9px rgba(0, 0, 0, 0.75);
+            }
+        }
+
+        i:first-child {
+            color: red;
+        }
+
+        i:nth-child(2) {
+            color: $circle-color;
+        }
+    }
+}
+
+.container-allcard {
+    position: relative;
+    top: 15vh;
+
+    .container-card {
+        @include flexCenter();
+        
+        .card {
+            height: 150px;
+            width: 150px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: $card-color;
+            border-radius: 20px;
+            
+            &:hover {
+                background-color: $hover-card-color;
+                transition: all 0.5s;
+            }
+        }
+        
+        i {
+            font-size: 80px;
+            @include flexCenter();
+            margin-top: 20%;
+            animation: card-animation 0.2s ease-in;
+        }
+
+    }
+}
+
+// Added dynamically 
+.circle {
+    i {
+        font-weight: normal;
+        // background-color: #FFB300;
+        color: #fff;
+        // box-shadow: 2px 2px 23px -9px rgba(0, 0, 0, 0.75);
+    }
+}
+
+.cross {
+    i {
+        color: #fff;
+        // background-color: #E53935;
+        // box-shadow: 2px 2px 23px -9px rgba(0, 0, 0, 0.75);
+    }
+}
+
+// animations
+@keyframes modal-slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-400px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes card-animation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
